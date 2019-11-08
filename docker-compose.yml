@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  net:
+
+services:
+  web:
+    image: nothanks:latest
+    networks:
+      - net
+    environment:
+      - MONGODB_HOST=db
+    command: python -u app.py
+    ports:
+      - "5000:5000"
+  db:
+    image: mongo:latest
+    networks:
+      - net

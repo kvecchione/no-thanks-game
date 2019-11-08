@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "30c8c7b0-71a2-443e-baa1-b11e8b8293c9",
+		"name": "No Thanks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Game List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/create",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test3\"}"
+				},
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2/register",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						"2",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Game",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\": \"DZWnY9tU\"}"
+				},
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2/start",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						"2",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Game State",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Private Game State",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\": \"DZWnY9tU\"}"
+				},
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Play Turn",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\": \"DZWnY9tU\", \"action\": \"pass\"}"
+				},
+				"url": {
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2/play",
+					"protocol": "https",
+					"host": [
+						"nothanksapi",
+						"kvecchione",
+						"com"
+					],
+					"path": [
+						"api",
+						"game",
+						"2",
+						"play"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

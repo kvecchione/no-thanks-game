@@ -66,6 +66,7 @@ game_list_model = api.model('GameList', {
 class GameList(Resource):
     @ns.marshal_with(game_list_model)
     def get(self):
+        '''Get list of games'''
         games = Game.objects()
         game_list = []
         for game in games:
@@ -77,10 +78,11 @@ class GameList(Resource):
         return game_list
 
 
-@ns.route('/')
+@ns.route('/create')
 class GameCreate(Resource):
     @ns.marshal_with(game_model)
     def post(self):
+        '''Create new game'''
         g = Game()
         g.deck = create_shuffled_deck()
         g.save()
@@ -92,20 +94,22 @@ class GameCreate(Resource):
 class GameState(Resource):
     @ns.marshal_with(game_model)
     def get(self, game_id):
+        '''Get game state by game ID'''
         try:
             g = Game.objects.get(game_id=game_id)
         except:
-            return "Game not found", 404
+            api.abort(404, 'Game not found')
         
         return public_game_state(g)
 
     @ns.expect(token_input_model)
     @ns.marshal_with(game_model)
     def post(self, game_id):
+        '''Get private game state for user by token'''
         try:
             g = Game.objects.get(game_id=game_id)
         except:
-            return "Game not found", 404
+            api.abort(404, 'Game not found')
 
         data = api.payload
 
@@ -121,20 +125,21 @@ class GameRegister(Resource):
     @ns.expect(player_name_input_model)
     @ns.marshal_with(player_model)
     def post(self, game_id):
+        '''Register player for game'''
         data = api.payload
         if 'name' not in data:
-            return "Missing player name", 400
+            api.abort(400, 'Missing player name')
         try:
             g = Game.objects.get(game_id=game_id)
         except:
-            return "Game not found", 404
+            api.abort(404, 'Game not found')
 
         for player in g.players:
             if data['name'] == player.name:
-                return "Name already in use", 400
+                api.abort(400, 'Name already in use')
         
         if len(g.players) == MAX_PLAYERS:
-            return "Game is full", 400
+            api.abort(400, 'Game is full')
 
         p = Player(name=data['name'], token=generate_token())
 
@@ -150,25 +155,26 @@ class GameStart(Resource):
     @ns.expect(token_input_model)
     @ns.marshal_with(game_model)
     def put(self, game_id):
+        '''Start a game'''
         data = api.payload
         if 'token' not in data:
-            return "Missing player token", 400
+            api.abort(400, 'Missing player token')
         try:
             g = Game.objects.get(game_id=game_id)
         except:
-            return "Game not found", 404
+            api.abort(404, 'Game not found')
         if g.status == 'active':
-            return "Cannot start game, already in progress", 400
+            api.abort(400, 'Cannot start game, already in progress')
         elif g.status == 'complete':
-            return "Cannot start game, already finished", 400
+            api.abort(400, 'Cannot start game, already finished')
         elif len(g.players) < MIN_PLAYERS:
-            return "Cannot start game, not enough players", 400
+            api.abort(400, 'Cannot start game, not enough players')
 
         player_name = player_name_from_token(g, data['token'])
         if player_name == 'unknown':
-            return "Cannot start game, not a participant", 400
+            api.abort(400, 'Cannot start game, not a participant')
 
-        add_log_message(g, "Game started by " + player_name)
+        add_log_message(g, 'Game started by ' + player_name)
         g.status = 'active'
         random.shuffle(g.players)
         deal_initial_chips(g)
@@ -186,24 +192,25 @@ class GamePlay(Resource):
     @ns.expect(play_input_model)
     @ns.marshal_with(game_model)
     def post(self, game_id):
+        '''Play a turn of a game'''
         data = api.payload
         if 'token' not in data:
-            return "Missing player token", 400
+            api.abort(400, 'Missing player token')
         if 'action' not in data:
-            return "Missing player action", 400
+            api.abort(400, 'Missing player action')
         try:
             g = Game.objects.get(game_id=game_id)
         except:
-            return "Game not found", 404
+            api.abort(404, 'Game not found')
         
         if g.status != 'active':
-            return "Game is not currently active", 400   
+            api.abort(400, 'Game is not currently active') 
     
         for player in g.players:
             if data['token'] == player.token and player.name == g.current_player:
                 break
         else:
-            return "Not your turn yet! (current turn: " +g.current_player + ')', 400
+            api.abort(400, 'Not your turn yet! (current turn: ' + g.current_player + ')')
 
         for player in g.players:
             if player.name == g.current_player:
@@ -217,7 +224,7 @@ class GamePlay(Resource):
         elif data['action'] == 'pass':
             play_pass(g)
         else:
-            return "Invalid action!", 400
+            api.abort(400, 'Invalid action!')
         
         g.cards_left_in_deck = len(g.deck)
         g.save()

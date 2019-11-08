@@ -12,10 +12,6 @@ from nothanks.functions.functions import *
 
 ns = api.namespace('game', description='Operations related to gameplay')
 
-player_fields = ns.model('game', {
-    'name': fields.String,
-})
-
 
 @ns.route('/')
 class GameList(Resource):
@@ -128,11 +124,11 @@ class GamePlay(Resource):
         if g.status != 'active':
             return "Game is not currently active", 400   
     
-        # for player in g.players:
-        #     if data['token'] == player.token and player.name == g.current_player:
-        #         break
-        # else:
-        #     return "Not your turn yet! (current turn: " +g.current_player + ')', 400
+        for player in g.players:
+            if data['token'] == player.token and player.name == g.current_player:
+                break
+        else:
+            return "Not your turn yet! (current turn: " +g.current_player + ')', 400
 
         for player in g.players:
             if player.name == g.current_player:

@@ -5,7 +5,7 @@ networks:
 
 services:
   web:
-    image: umkvec/no-thanks-api:latest
+    image: kvecchione/no-thanks-api:latest
     networks:
       - net
     environment:

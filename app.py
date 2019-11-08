@@ -4,9 +4,10 @@ from flask import Blueprint, Flask
 
 from nothanks import settings
 from nothanks.api import game
-from nothanks.api.restplus import api
+
 
 app = Flask(__name__)
+api = Api(version='1.0', title='No Thanks! API', description='An API for the No Thanks! game')
 
 
 def initialize_app(flask_app):

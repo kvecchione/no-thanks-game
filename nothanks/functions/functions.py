@@ -1,8 +1,13 @@
 import datetime
 import json
 import random
+import string
 
 from nothanks.db.models import LogItem
+
+
+def generate_token()
+    return ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(8)])
 
 
 def add_log_message(game, message):

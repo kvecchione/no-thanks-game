@@ -1,14 +1,13 @@
-import datetime
 import json
 import random
-import string
 
 from flask import Response, jsonify, request
 
 from flask_restplus import Resource, fields
-from nothanks.api.restplus import api
+from nothanks import api
 from nothanks.db.models import Game, LogItem, Player
 from nothanks.functions.functions import *
+
 
 ns = api.namespace('game', description='Operations related to gameplay')
 
@@ -36,9 +35,9 @@ class GameState(Resource):
             g = Game.objects.get(game_id=id)
         except:
             return "Game not found", 404
-
         
         return jsonify(public_game_state(g))
+
 
     def post(self, id):
         try:
@@ -52,6 +51,7 @@ class GameState(Resource):
             return jsonify(public_game_state(g))
         else:
             return jsonify(private_game_state(g, data['token']))
+
 
 @ns.route('/<int:id>/register')
 class GameRegister(Resource):
@@ -68,7 +68,7 @@ class GameRegister(Resource):
             if data['name'] == player.name:
                 return "Name already in use", 400
 
-        p = Player(name=data['name'], token=''.join([random.choice(string.ascii_letters + string.digits) for _ in range(8)]))
+        p = Player(name=data['name'], token=generate_token())
 
         g.players.append(p)
         g.save()

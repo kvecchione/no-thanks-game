@@ -25,4 +25,3 @@ class Game(Document):
     winner = StringField(default='')
     log = EmbeddedDocumentListField(LogItem)
     current_player = StringField(default='')
-

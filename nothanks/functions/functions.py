@@ -6,7 +6,7 @@ import string
 from nothanks.db.models import LogItem
 
 
-def generate_token()
+def generate_token():
     return ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(8)])
 
 
@@ -42,7 +42,7 @@ def deal_initial_chips(game):
 
 
 def public_game_state(game):
-    data = json.loads(game.to_json())
+    data = game.to_mongo().to_dict()
 
     if game.status != 'complete':
         # remove deck
@@ -57,7 +57,7 @@ def public_game_state(game):
 
 
 def private_game_state(game, token):
-    data = json.loads(game.to_json())
+    data = game.to_mongo().to_dict()
 
     # remove deck
     del data['deck']

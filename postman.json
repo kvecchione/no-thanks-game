@@ -6,44 +6,12 @@
 	},
 	"item": [
 		{
-			"name": "Register Player",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"name\":\"test1\"}"
-				},
-				"url": {
-					"raw": "http://localhost:5000/api/game/23/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"game",
-						"23",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Game State",
+			"name": "Get Game List",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/api/game/23",
+					"raw": "http://localhost:5000/api/game/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -52,41 +20,7 @@
 					"path": [
 						"api",
 						"game",
-						"23"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Private Game State",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"token\": \"GqWsLj13\"}"
-				},
-				"url": {
-					"raw": "http://localhost:5000/api/game/20",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"game",
-						"20"
+						""
 					]
 				}
 			},
@@ -95,7 +29,7 @@
 		{
 			"name": "Create Game",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -118,6 +52,38 @@
 			"response": []
 		},
 		{
+			"name": "Register Player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"mike\"}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/game/2/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"game",
+						"2",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Start Game",
 			"request": {
 				"method": "PUT",
@@ -130,10 +96,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"token\": \"4wsSK0Mw\"}"
+					"raw": "{\"token\": \"DZWnY9tU\"}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/23/start",
+					"raw": "http://localhost:5000/api/game/2/start",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -142,8 +108,60 @@
 					"path": [
 						"api",
 						"game",
-						"23",
+						"2",
 						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Game State",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/game/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"game",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Private Game State",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\": \"DZWnY9tU\"}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/game/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"game",
+						"2"
 					]
 				}
 			},
@@ -162,10 +180,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"token\": \"iDQhxk6m\", \"action\": \"take\"}"
+					"raw": "{\"token\": \"DZWnY9tU\", \"action\": \"pass\"}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/23/play",
+					"raw": "http://localhost:5000/api/game/2/play",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -174,7 +192,7 @@
 					"path": [
 						"api",
 						"game",
-						"23",
+						"2",
 						"play"
 					]
 				}

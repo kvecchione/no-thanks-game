@@ -1,14 +1,13 @@
 import os
 
 from flask import Blueprint, Flask
+from flask_restplus import Api
+from nothanks.api.api import api
 
-from nothanks import settings
 from nothanks.api import game
 
-
 app = Flask(__name__)
-api = Api(version='1.0', title='No Thanks! API', description='An API for the No Thanks! game')
-
+app.config.SWAGGER_UI_DOC_EXPANSION = 'list'
 
 def initialize_app(flask_app):
     blueprint = Blueprint('api', __name__, url_prefix='/api')

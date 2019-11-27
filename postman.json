@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "30c8c7b0-71a2-443e-baa1-b11e8b8293c9",
+		"_postman_id": "819c5d32-6b9b-4d75-b882-0ecb5203020b",
 		"name": "No Thanks",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,12 +11,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/api/game/",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",
@@ -36,16 +37,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/create",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",
-						""
+						"create"
 					]
 				}
 			},
@@ -67,12 +69,13 @@
 					"raw": "{\"name\":\"mike\"}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/2/register",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2/register",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",
@@ -99,12 +102,13 @@
 					"raw": "{\"token\": \"DZWnY9tU\"}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/2/start",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2/start",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",
@@ -121,12 +125,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/api/game/2",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",
@@ -152,12 +157,13 @@
 					"raw": "{\"token\": \"DZWnY9tU\"}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/2",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",
@@ -183,12 +189,13 @@
 					"raw": "{\"token\": \"DZWnY9tU\", \"action\": \"pass\"}"
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/game/2/play",
-					"protocol": "http",
+					"raw": "https://nothanksapi.kvecchione.com/api/game/2/play",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"nothanksapi",
+						"kvecchione",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"api",
 						"game",

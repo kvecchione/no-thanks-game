@@ -3,7 +3,7 @@ import random
 
 from flask import Response, jsonify, request
 
-from flask_restplus import Resource, fields
+from flask_restx import Resource, fields
 from nothanks.api.api import api
 from nothanks.db.models import Game, LogItem, Player
 from nothanks.functions.functions import *

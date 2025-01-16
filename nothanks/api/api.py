@@ -1,4 +1,4 @@
-from flask_restplus import Api
+from flask_restx import Api
 from flask import url_for
 
 class ProxiedApi(Api):
